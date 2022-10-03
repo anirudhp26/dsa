@@ -1,4 +1,4 @@
-package linkedlists;
+package dsa.dsa;
 
 class linkedlists {
     private Node head;
@@ -96,6 +96,19 @@ class linkedlists {
 
         node.next = insertRec(val, index, node.next);
         return node;
+    }
+
+    public Node duplicates(Node head) {
+        Node temp = head;
+        while (temp.next != null) {
+            if (temp.value == temp.next.value) {
+                temp.next = temp.next.next;
+            }
+            else {
+                temp = temp.next;
+            }
+        }
+        return temp;
     }
 
     
