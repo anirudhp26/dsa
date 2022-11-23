@@ -52,6 +52,7 @@ class customStacks{
                     return true;
                 }
             }
+            System.out.println("ELEMENT NOT FOUND");
             return false;
         }
     }
