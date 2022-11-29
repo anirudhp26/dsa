@@ -1,5 +1,3 @@
-package dsa.dsa;
-
 class linkedlists {
     private Node head;
     private Node tail;

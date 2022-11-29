@@ -1,5 +1,3 @@
-package dsa.dsa;
-
 import java.util.Arrays;
 
 class customStacks{

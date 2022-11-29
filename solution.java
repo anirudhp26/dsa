@@ -1,54 +1,40 @@
-import java.util.HashSet;
+import java.util.Arrays;
 
-public class solution {
+class Solution {
+    public static void main(String[] args) {
+        int[] nums1 = {4,0,0,0,0,0};
+        int[] nums2 = {1,2,3,5,6};
+        merge(nums1, 1, nums2, 5);
+    }
 
-    public String longestPalindrome(String s) {
-        int i = 0;
-        int j = 0;
-        String str = "";
+    public static int[] merge(int[] nums1, int m, int[] nums2, int n) {
+        if (m==0) {
+            for (int i = 0; i < n; i++) {
+                nums1[i] = nums2[i];
+            }
+        }
+        else {
+            int count = 0;
+            for (int i = m; i < m+n; i++) {
+                nums1[i] = nums2[count++];
+            }
+            System.out.println(Arrays.toString(nums1));
+        }
 
-        while (j<s.length()) {
-            if (isPalindrome(s.substring(i, j))) {
-                if (s.substring(i, j).length() > max) {
-                    max = s.substring(i, j).length();
-                    str = s.substring(i, j);
+        for (int i = 0; i < nums1.length - 1; i++) {
+            for (int j = 0; j < nums1.length - 1 - i; j++) {
+                if (nums1[j] > nums1[j+1]) {
+                    swap(nums1, j, j+1);
+                    System.out.println(Arrays.toString(nums1));
                 }
-                i++;
-            }
-            else{
-                j++;
             }
         }
-
-        return str;
+        return nums1;
     }
-
-    public int lengthofLongestSubString(String s) {
-        HashSet<Character> mp = new HashSet();
-        int i = 0;
-        int j = 0;
-        int max = 0;
-        while(j<s.length()){
-            if (mp.contains(s.charAt(j))) {
-                mp.remove(s.charAt(i));
-                i++;
-            }
-            mp.add(s.charAt(j));
-            max = Math.max(mp.size(), max);
-            j++;
-        }
-        return max;
+    public static int[] swap(int[] arr, int a, int b){
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
+        return arr;
     }
-
-    public boolean isPalindrome(String s){
-        s = s.toLowerCase();
-        for (int i = 0; i < s.length() / 2; i++) {
-            if (s.charAt(i) != s.charAt(s.length() - 1 - i)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    
 }
